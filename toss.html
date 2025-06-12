@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Toss</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #7F55B1, #2B2B52);
+            color: #fff;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        #coin {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #f7d774, #e0b64c, #d4a028);
+            border: 6px solid #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #222;
+            cursor: pointer;
+            box-shadow:
+                inset -6px -6px 12px rgba(255, 255, 255, 0.4),
+                inset 6px 6px 12px rgba(0, 0, 0, 0.2),
+                0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        #coin:hover {
+            box-shadow:
+                inset -6px -6px 12px rgba(255, 255, 255, 0.6),
+                inset 6px 6px 12px rgba(0, 0, 0, 0.3),
+                0 12px 40px rgba(0, 0, 0, 0.6);
+            transform: scale(1.05);
+        }
+
+        #coin.flip {
+            animation: flip 1.3s ease-in-out forwards;
+        }
+
+        @keyframes flip {
+            0% {
+                transform: rotateX(0deg);
+            }
+
+            25% {
+                transform: rotateX(180deg);
+            }
+
+            50% {
+                transform: rotateX(360deg);
+            }
+
+            75% {
+                transform: rotateX(540deg);
+            }
+
+            100% {
+                transform: rotateX(720deg);
+            }
+        }
+
+        .instruction {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            color: #eaeaea;
+        }
+
+        .credit {
+            position: absolute;
+            bottom: 1rem;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        #result {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            color: #f7d774;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Coin Toss</h1>
+    <div id="coin">Click</div>
+    <h5 id="result"></h5>
+    <p class="instruction">Click the coin to flip</p>
+    <div class="credit">&copy; Vikash</div>
+
+    <script>
+        const coin = ['Head', 'Tail'];
+        const coinEl = document.getElementById("coin");
+        const result = document.getElementById("result");
+
+        coinEl.addEventListener("click", () => {
+            coinEl.classList.remove("flip");
+            void coinEl.offsetHeight;
+
+            coinEl.classList.add("flip");
+
+            setTimeout(() => {
+                const side = Math.floor(Math.random() * 2);
+                coinEl.textContent = coin[side];
+                localStorage.setItem("tossResult", coin[side]);
+            }, 1000);
+             
+            setTimeout(() => {
+                coinEl.textContent = "click";
+                result.textContent = `${localStorage.getItem("tossResult")}`;
+            }, 4000);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Match Score</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="second.css">
+</head>
+
+<body>
+    <nav>
+        <h1>Live Score Tracker</h1>
+    </nav>
+    <div class="scoreboard">
+        <div class="display">
+            <div>Score: <span id="score">0</span>/<span id="wkt">0</span></div>
+            <div>Overs: <span id="over">0.0</span></div>
+        </div>
+        <div class="target" id="target">First Innings</div>
+       
+
+        <div class="buttons">
+            <button class="key">0</button>
+            <button class="key">1</button>
+            <button class="key">2</button>
+            <button class="key">3</button>
+            <button class="key">4</button>
+            <button class="key">6</button>
+            <button class="key">Out</button>
+            <button class="key">Wide</button>
+            <button class="key">No Ball</button>
+            <button class="key" id="inning">2nd Inning</button>
+            <button class="key" id="new">New Game</button>
+        </div>
+        <div class="log-section">
+            <h3>Ball-by-Ball Log</h3>
+            <ul id="logList"></ul>
+        </div>
+
+    </div>
+    <div class="credit">&copy; Vikash</div>
+
+    <script src="second.js"></script>
+</body>
+
+</html>
